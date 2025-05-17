@@ -217,7 +217,7 @@
 
 
 
-@can('الفواتير')
+@can('المستخدمين')
     <div class="app-sidebar__overlay slid" data-toggle="sidebar"></div>
     <aside class="app-sidebar sidebar-scroll">
         <div class="">
