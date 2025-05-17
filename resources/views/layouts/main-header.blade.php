@@ -54,7 +54,7 @@
                     <h5 class="mb-0 text-success">{{ $BookingsCount }}</h5>
                 </div>
             @endcan
-            @can('الفواتير')
+            @can('المستخدمين')
                 @if (Auth::user()->is_admin == 0 ?? '')
                     <div>
                         <label class="tx-13 mb-1 d-block"><strong>حجوزاتك اليوم</strong></label>
