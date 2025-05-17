@@ -1,0 +1,349 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4895ef;
+    --dark-color: #1b263b;
+    --light-color: #f8f9fa;
+}
+
+/* ========== 1. القسم العام ========== */
+.container {
+    max-width: 1200px;
+}
+
+/* ========== 2. قسم الهيرو ========== */
+.hero-section {
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: url("{{ asset("assets/images/hero-pattern.png") }}") no-repeat;
+    opacity: 0.1;
+}
+
+.hero-section img {
+    margin-top: 30px;
+}
+
+/* ========== 3. بطاقات الفعاليات ========== */
+.event-card {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border: none;
+    background: white;
+    height: 100%;
+}
+
+.event-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.event-img-container {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.event-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.event-card:hover .event-img {
+    transform: scale(1.1);
+}
+
+.event-badge {
+    position: absolute;
+    top: 15px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+}
+
+.event-date-badge {
+    left: 15px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.event-category-badge {
+    right: 15px;
+    background: var(--accent-color);
+}
+
+.event-featured-badge {
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f72585;
+}
+
+.event-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--dark-color);
+}
+
+.event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.event-meta-item {
+    display: flex;
+    align-items: center;
+}
+
+.event-meta-item i {
+    margin-left: 5px;
+    color: var(--primary-color);
+}
+
+.event-description {
+    color: #6c757d;
+    /* margin-bottom: 20px; */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.6;
+}
+
+.event-footer {
+    display: block;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.event-price {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 20px;
+}
+
+.event-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* ========== 4. أزرار ========== */
+
+.event-actions .btn {
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-booking {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    transition: all 0.3s;
+}
+
+.btn-booking:hover {
+    background-color: #3a7bd5;
+    border-color: #3a7bd5;
+}
+
+/* ========== 5. صفحة البحث والفلاتر ========== */
+.search-filter-section,
+.search-filter {
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.3s ease;
+}
+
+.search-filter-section:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #333;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color, #0d6efd); /* لون البرايمري */
+    border-radius: 5px;
+}
+
+/* ========== 6. البطاقات الأخرى ========== */
+.category-card,
+.testimonial-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    background: white;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.category-card:hover,
+.testimonial-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== 7. النشرة الإخبارية ========== */
+.newsletter-section {
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.newsletter-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: url("{{ asset("assets/images/pattern.png") }}") no-repeat;
+    opacity: 0.1;
+}
+
+/* ========== 8. صفحة الحجز ========== */
+.booking-section {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.booking-summary {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.booking-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.booking-step {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.booking-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: -50%;
+    width: 100%;
+    height: 2px;
+    background-color: #dee2e6;
+    z-index: 1;
+}
+
+.booking-step-number {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.booking-step.active .booking-step-number {
+    background-color: var(--accent-color);
+}
+
+.booking-form {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+/* ========== 9. Responsive ========== */
+@media (max-width: 768px) {
+    .event-img-container {
+        height: 180px;
+    }
+
+    .event-title {
+        font-size: 1.2rem;
+    }
+
+    .event-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .search-filter {
+        margin-bottom: 20px;
+    }
+
+    .booking-steps {
+        flex-direction: column;
+    }
+
+    .booking-step:not(:last-child)::after {
+        display: none;
+    }
+
+    .booking-step {
+        margin-bottom: 1.5rem;
+    }
+
+    .booking-form .row > div {
+        margin-bottom: 1rem;
+    }
+}

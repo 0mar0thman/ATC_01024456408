@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/plugins/sumoselect/sumoselect-rtl.css') }}">
     <!--Internal  TelephoneInput css-->
     <link rel="stylesheet" href="{{ URL::asset('assets/plugins/telephoneinput/telephoneinput-rtl.css') }}">
+     <link rel="stylesheet" href="{{ asset('assets/css/container/container.css') }}">
     <style>
         .breadcrumb-header {
             background-color: white;

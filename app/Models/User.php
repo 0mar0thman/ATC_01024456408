@@ -44,6 +44,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'roles_name' => 'array',    
+        'roles_name' => 'array',
     ];
+
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
 }

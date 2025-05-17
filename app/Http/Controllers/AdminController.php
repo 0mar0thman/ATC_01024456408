@@ -19,8 +19,8 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::orderBy('id', 'DESC')->paginate(5);
-        return view('users.show_users', compact('roles'))
+        $users = User::with('roles')->orderBy('id', 'DESC')->paginate(10);
+        return view('users.show_users', compact('users'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -48,7 +48,7 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles_name' => 'required'
+            'role' => 'required'
         ]);
 
         $input = $request->all();
@@ -56,8 +56,7 @@ class AdminController extends Controller
         $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
-        // dd($request);
-        $user->assignRole($request->input('roles_name'));
+        $user->assignRole($request->input('role'));
 
         return redirect()->route('users.index')
             ->with('success', 'تم اضافة المستخدم بنجاح');
@@ -102,7 +101,7 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'role' => 'required'
         ]);
 
         $input = $request->all();
@@ -117,8 +116,8 @@ class AdminController extends Controller
         $user->update($input);
 
         \DB::table('model_has_roles')->where('model_id', $id)->delete();
-        
-        $user->assignRole($request->input('roles'));
+
+        $user->assignRole($request->input('role'));
         return redirect()->route('users.index')
             ->with('success', 'تم تحديث معلومات المستخدم بنجاح');
     }

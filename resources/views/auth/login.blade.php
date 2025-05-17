@@ -8,7 +8,8 @@
     <!-- Sidemenu-respoansive-tabs css -->
     <link href="{{ URL::asset('assets/plugins/sidemenu-responsive-tabs/css/sidemenu-responsive-tabs.css') }}"
         rel="stylesheet">
-    @vite('resources/css/auth/login.css')
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/auth/login.css') }}">
+
 @endsection
 
 @section('content')

@@ -1,66 +1,135 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎟️ Event Booking System (Laravel 10)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 🚀 How to Work with the Project
 
-## About Laravel
+### 🛠️ Step 1: Create the Database
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Create a new database manually from MySQL or phpMyAdmin:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```
+Name: event_booking
+User: root
+Password: [leave it empty]
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+### 💻 Step 2: Set up Local Server (using Laragon)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+> 💡 You can use Laragon or any similar tool (e.g., XAMPP, MAMP)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+#### ✅ Download & Setup Laragon:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Download Laragon:**  
+   [Laragon v8.1.0](https://github.com/leokhoa/laragon/releases/download/8.1.0/laragon-wamp.exe)
 
-## Laravel Sponsors
+2. **Install Laragon**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. Open Laragon → **Settings** → **General** → **Document Root** → set the path to your project folder
 
-### Premium Partners
+4. Click **Stop** → then **Start All**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+5. Click **Web**
 
-## Contributing
+6. Visit in browser:  
+   `http://localhost:8000/your-project/public`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## If you have any problem opening the project, try this URL (HOST):
 
-## Code of Conduct
+`http://booking.byethost18.com/home`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Note 1: Please make sure to open the link using HTTP (http://booking.byethost18.com) and not HTTPS, as the site does not support HTTPS. Note that some browsers now default to HTTPS automatically, so double-check the protocol.
 
-## Security Vulnerabilities
+Note 2: If the link doesn't work, it may be due to a hosting issue. Please try again later or contact us for assistance.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+### 📦 Step 3: Install Dependencies
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+composer install
+npm install
+cd Booking  # name-project 
+```
+
+---
+
+### 🧱 Step 4: Run Migrations, Seeders, Roles & Permissions
+
+```bash
+php artisan migrate:fresh --seed
+php artisan db:seed --class=RolePermissionSeeder
+php artisan db:seed --class=CreateAdminUserSeeder
+```
+
+## "The SQL file event_booking.sql containing the required data is attached in case any issue occurs during the seeder data upload."
+
+---
+
+### 🛠️ Step 5: Review
+
+Visit the project in your browser:  
+`http://localhost:8000/your-project/public`
+
+#### 🔐 Login Credentials
+
+**Admin Login:**
+
+-   Email: `omar@gmail.com`
+-   Password: `11111111`
+
+**User Login:**
+
+-   Email: `user@gmail.com`
+-   Password: `22222222`
+
+> 💡 **Tip:** It’s recommended to open each user role (Admin & User) in a separate browser to avoid session conflicts.
+
+---
+
+### 🌐 Alternative Access (Online Host)
+
+If you have any problem opening the project locally, you can access the live version via the following URL:  
+`http://booking.byethost18.com/home`
+
+Note: If the link doesn't work, it may be due to a hosting issue. Please try again later or contact us for assistance.
+
+---
+
+## 👥 Features for All Users
+
+-   🔐 Register / Login (same page for all user types)
+-   🌟 View events (featured and regular)
+-   ✅ Book an event with a single click
+-   📄 View your booking details
+-   🔍 Filter your bookings (confirmed / canceled)
+-   🖨️ Download or print your booking confirmation
+
+---
+
+## 🛡️ ✅ Admin / Owner Dashboard
+
+-   🔐 Secure login (all roles use the same login page)
+-   🧩 Manage:
+    -   🎯 Event Categories
+    -   🎟 Events
+    -   👥 Users
+    -   🔐 Roles & Permissions
+    -   📑 All Bookings (with advanced filters)
+-   📊 Dashboard Overview:
+    -   Total number of events
+    -   Upcoming events
+    -   Today's bookings
+    -   Top event
+    -   Recent 5 bookings
+-   🔔 Real-time notifications for new bookings
+-   🔍 Advanced event search and filtering
+-   🖥️ Fullscreen mode support
+-   🚪 Logout button
+
+---
+
+## Contact Me
+
+-   📧 Email: omar.mohamed11221@gmail.com
+-   📱 WhatsApp / Phone: +20 1024456408

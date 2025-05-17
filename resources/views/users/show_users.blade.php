@@ -2,6 +2,7 @@
 @section('css')
     <!--Internal   Notify -->
     <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+     <link rel="stylesheet" href="{{ asset('assets/css/container/container.css') }}">
     <style>
         .breadcrumb-header {
             background-color: white;
@@ -97,82 +98,63 @@
                         </thead>
                         </style>
                         <tbody>
-                            @php $i = 0; @endphp
-                            @foreach ($roles as $role)
-                                @foreach ($role->users as $user)
-                                    <tr class="align-middle">
-                                        <td class="text-center">{{ ++$i }}</td>
-                                        <td class="text-center align-middle">
-                                            <div class="d-flex align-items-center justify-content-center">
-                                                <div>
-                                                    <h6 class="mb-0">{{ $user->name }}</h6>
-                                                    <small class="text-muted">ID: {{ $user->id }}</small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="mailto:{{ $user->email }}" class="text-primary">
-                                                {{ $user->email }}
-                                            </a>
-                                        </td>
-                                        <td>
-                                            @if ($user->status === 'مفعل')
-                                                <span class="badge bg-success rounded-pill p-2">
-                                                    <i class="fas fa-check-circle me-1"></i> مفعل
-                                                </span>
-                                            @else
-                                                <span class="badge bg-secondary rounded-pill p-2">
-                                                    <i class="fas fa-times-circle me-1"></i> غير مفعل
-                                                </span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($role->name == 'admin')
-                                                <span class="badge bg-info text-dark fs-6">
-                                                    <i class="fas fa-shield-alt me-1"></i> {{ $role->name }}
-                                                </span>
-                                            @elseif($role->name == 'owner')
-                                                <span class="badge bg-warning text-dark fs-6">
-                                                    <i class="fas fa-crown me-1"></i> {{ $role->name }}
-                                                </span>
-                                            @else
-                                                <span class="badge bg-light text-dark fs-6">
-                                                    <i class="fas fa-user me-1"></i> {{ $role->name }}
-                                                </span>
-                                            @endif
-                                        </td>
-                                        <td class="text-nowrap">
-                                            <i class="far fa-calendar-alt me-1 text-muted"></i>
-                                            {{ $user->created_at->format('Y-m-d') }}
-                                        </td>
-                                        <td>
-                                            <div class="d-flex justify-content-center">
-                                                @can('تعديل مستخدم')
-                                                    <a class="btn btn-sm btn-outline-primary ml-1"
-                                                        href="{{ route('users.edit', $user->id) }}" title="تعديل">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                @endcan
-                                                @can('حذف مستخدم')
-                                                    @if ($role->name !== 'owner' && $role->name !== 'admin')
-                                                        <form action="{{ route('users.destroy', $user->id) }}"
-                                                            method="POST" class="d-inline ms-3">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-outline-danger"
-                                                                title="حذف"
-                                                                onclick="return confirm('هل أنت متأكد من حذف هذا المستخدم؟')">
-                                                                <i class="fas fa-trash-alt"></i>
-                                                            </button>
-                                                        </form>
-                                                    @endif
-                                                @endcan
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                            @foreach ($users as $index => $user)
+                                <tr>
+                                    <td>{{ $i + $index + 1 }}</td>
+                                    <td>
+                                        <div>
+                                            <strong>{{ $user->name }}</strong><br>
+                                            <small class="text-muted">ID: {{ $user->id }}</small>
+                                        </div>
+                                    </td>
+                                    <td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
+                                    <td>
+                                        @if ($user->status === 'مفعل')
+                                            <span class="badge bg-success text-white">مفعل</span>
+                                        @else
+                                            <span class="badge bg-secondary text-white">غير مفعل</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @foreach ($user->roles as $role)
+                                            <span class="badge bg-warning text-dark">{{ $role->name }}</span>
+                                        @endforeach
+
+                                        @if ($user->role == 'admin')
+                                            <span class="badge bg-info text-white">{{ $user->role }}</span>
+                                        @else
+                                            <span class="badge bg-danger text-white">{{ $user->role }}</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $user->created_at->format('Y-m-d') }}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-center">
+                                            @can('تعديل مستخدم')
+                                                <a href="{{ route('users.edit', $user->id) }}"
+                                                    class="btn btn-sm btn-outline-primary m-2">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            @endcan
+
+                                            @can('حذف مستخدم')
+                                                @if (!$user->roles->contains('name', 'admin') && !$user->roles->contains('name', 'owner'))
+                                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                                        class="m-2">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-sm btn-outline-danger"
+                                                            onclick="return confirm('هل أنت متأكد؟')">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                            @endcan
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
+
                     </table>
                 </div>
             </div>
@@ -192,7 +174,6 @@
 <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js') }}"></script>
-<script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.bootstrap4.min.js') }}"></script>
@@ -202,11 +183,13 @@
 <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
-<script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
-<!--Internal  Datatable js -->
+
+<!-- Internal Datatable js -->
 <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
-<!--Internal  Notify js -->
+
+<!-- Internal Notify js -->
 <script src="{{ URL::asset('assets/plugins/notify/js/notifIt.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/notify/js/notifit-custom.js') }}"></script>
+
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -52,7 +53,6 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            // 'status' => ['required']
         ]);
     }
 
@@ -64,11 +64,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+        // إنشاء أو استرجاع دور المستخدم العادي (user)
+        $userRole = Role::firstOrCreate([
+            'name' => 'user',
+            'guard_name' => 'web'
+        ]);
+        $normalUser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            // 'status' => 'owner',
+            'status' => 'مفعل',
+            'role' => 'user',
+            'is_admin' => false,
             'password' => Hash::make($data['password']),
         ]);
+        // تعيين أدوار المستخدم (مستخدم عادي )
+        $normalUser->assignRole([$userRole]);
+        return $normalUser;
     }
 }

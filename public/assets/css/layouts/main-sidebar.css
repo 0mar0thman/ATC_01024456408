@@ -1,0 +1,53 @@
+    .app-sidebar {
+        transition: all 300ms ease-in-out;
+        overflow-y: auto;
+    }
+
+    .slide-menu {
+        transition: all 300ms ease-in-out;
+    }
+
+    .side-menu__item {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-size: 15px;
+        font-weight: 500;
+        color: #555;
+    }
+
+    .side-menu__item:hover,
+    .side-menu__item.active {
+        background-color: #f1f1f1;
+        color: #000;
+    }
+
+    .angle {
+        margin-right: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .slide.open .angle {
+        transform: rotate(180deg);
+    }
+
+    @media (max-width: 768px) {
+        .app-sidebar {
+            width: 240px;
+        }
+
+        .side-menu__item {
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+    }
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 0.25em 0.5em;
+        border-radius: 999px;
+        margin-right: 10px;
+        color: white;
+    }

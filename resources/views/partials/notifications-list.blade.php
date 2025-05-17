@@ -1,7 +1,6 @@
 {{-- notifications-list.blade.php --}}
 @isset($notifications)
 {{-- @ --}}
-{{-- <?php dd($notifications) ?> --}}
 @forelse($notifications as $notification)
     @php
     $notificationData = is_array($notification->data) ? $notification->data : json_decode($notification->data, true);

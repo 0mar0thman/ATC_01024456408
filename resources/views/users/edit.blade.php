@@ -2,6 +2,7 @@
 @section('css')
     <!-- Internal Nice-select css  -->
     <link href="{{ URL::asset('assets/plugins/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet" />
+     <link rel="stylesheet" href="{{ asset('assets/css/container/container.css') }}">
     <style>
         .breadcrumb-header {
             background-color: white;
@@ -105,8 +106,8 @@
                 <div class="row mg-b-20">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>نوع المستخدم</strong>
-                            {!! Form::select('roles[]', $roles, $userRole, ['class' => 'form-control', 'multiple']) !!}
+                            <strong>نوع المستخدم</strong> 
+                            {!! Form::select('role', $roles, $userRole, ['class' => 'form-control', 'multiple']) !!}
                         </div>
                     </div>
                 </div>
@@ -120,9 +121,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 </div>
 <!-- row closed -->

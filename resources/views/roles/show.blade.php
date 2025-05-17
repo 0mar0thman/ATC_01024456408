@@ -4,6 +4,7 @@
     <link href="{{ URL::asset('assets/plugins/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
     <!--Internal  treeview -->
     <link href="{{ URL::asset('assets/plugins/treeview/treeview-rtl.css') }}" rel="stylesheet" type="text/css" />
+     <link rel="stylesheet" href="{{ asset('assets/css/container/container.css') }}">
     <style>
         .breadcrumb-header {
             background-color: white;

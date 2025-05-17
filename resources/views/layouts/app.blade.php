@@ -14,11 +14,11 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-
     <!-- Scripts -->
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link href="{{ URL::asset('assets/css/app.css') }}" rel="stylesheet" />
+    <script src="{{ URL::asset('assets/js/app.js') }}"></script>
     {{-- @vite(['resources/css/app.css']) --}}
 </head>
 
@@ -85,6 +85,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{ URL::asset('assets/js/app.js') }}"></script>
 </body>
 
 </html>

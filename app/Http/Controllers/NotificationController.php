@@ -18,18 +18,18 @@ class NotificationController extends Controller
         }
 
         // تحويل المستخدم إلى صفحة الفاتورة
-        $invoiceId = $notification->data['invoice_id'] ?? null;
+        $Booking_id = $notification->data['booking_id'] ?? null;
 
-        if ($invoiceId) {
-            return redirect()->route('Status_show', [$invoiceId]);
+        if ($Booking_id) {
+            return redirect()->route('booking.details', $Booking_id);
         }
 
-        return redirect()->back()->with('error', 'Invoice not found.');
+        return redirect()->back()->with('error', 'Booking not found.');
     }
 
     public function markAll()
     {
-        auth()->user()->unreadNotifications->markAsRead();
+        DatabaseNotification::whereNull('read_at')->latest()->get()->markAsRead();
         return redirect()->back()->with('success', 'All notifications marked as read.');
     }
 }

@@ -2,6 +2,7 @@
 @section('css')
     <!-- Internal Nice-select css  -->
     <link href="{{ URL::asset('assets/plugins/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet" />
+     <link rel="stylesheet" href="{{ asset('assets/css/container/container.css') }}">
     <style>
         .breadcrumb-header {
             background-color: white;
@@ -108,7 +109,7 @@
                         <div class="col-xs-12 col-md-12">
                             <div class="form-group">
                                 <label class="form-label">صلاحية المستخدم</label>
-                                {!! Form::select('roles_name[]', $roles, [], ['class' => 'form-control', 'multiple']) !!}
+                                {!! Form::select('role', $roles, [], ['class' => 'form-control', 'multiple']) !!}
                             </div>
                         </div>
                     </div>
@@ -129,8 +130,6 @@
 <!-- main-content closed -->
 @endsection
 @section('js')
-
-
 <!-- Internal Nice-select js-->
 <script src="{{ URL::asset('assets/plugins/jquery-nice-select/js/jquery.nice-select.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/jquery-nice-select/js/nice-select.js') }}"></script>

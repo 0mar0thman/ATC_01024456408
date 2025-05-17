@@ -21,9 +21,4 @@ class Product extends Model
         return $this->belongsTo(Section::class, 'section_id');
     }
 
-    public function invoices()
-    {
-        return $this->hasMany(Invoice::class, 'product_id');
-    }
-
 }
