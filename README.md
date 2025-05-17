@@ -38,7 +38,7 @@ Password: [leave it empty]
 
 `http://booking.byethost18.com/home`
 
-Note 1: Please make sure to open the link using HTTP (http://booking.byethost18.com) and not HTTPS, as the site does not support HTTPS. Note that some browsers now default to HTTPS automatically, so double-check the protocol.
+Note 1: Please make sure to open the link using HTTP (http://booking.byethost18.com/home) and not HTTPS, as the site does not support HTTPS. Note that some browsers now default to HTTPS automatically, so double-check the protocol.
 
 Note 2: If the link doesn't work, it may be due to a hosting issue. Please try again later or contact us for assistance.
 
