@@ -36,7 +36,7 @@ Password: [leave it empty]
 
 ## If you have any problem opening the project, try this URL (HOST):
 
-`http://booking.byethost18.com/home`
+`http://booking.byethost18.com/Booking/public/`
 
 Note 1: Please make sure to open the link using HTTP (http://booking.byethost18.com/home) and not HTTPS, as the site does not support HTTPS. Note that some browsers now default to HTTPS automatically, so double-check the protocol.
 
@@ -90,7 +90,7 @@ Visit the project in your browser:
 ### 🌐 Alternative Access (Online Host)
 
 If you have any problem opening the project locally, you can access the live version via the following URL:  
-`http://booking.byethost18.com/home`
+`http://booking.byethost18.com/Booking/public/`
 
 Note: If the link doesn't work, it may be due to a hosting issue. Please try again later or contact us for assistance.
 
