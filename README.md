@@ -27,11 +27,13 @@ Password: [leave it empty]
 
 3. Open Laragon → **Settings** → **General** → **Document Root** → set the path to your project folder
 
-4. Click **Stop** → then **Start All**
+4. Create database named **event_booking**
 
-5. Click **Web**
+5. Click **Stop** → then **Start All**
 
-6. Visit in browser:  
+6. Click **Web**
+
+7. Visit in browser:  
    `http://localhost:8000/your-project/public`
 
 ## If you have any problem opening the project, try this URL (HOST):
